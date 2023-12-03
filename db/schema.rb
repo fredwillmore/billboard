@@ -14,6 +14,29 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_03_171811) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "artists", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "chart_entries", force: :cascade do |t|
+    t.integer "position"
+    t.integer "last_week_position"
+    t.integer "peak_position"
+    t.integer "weeks_on_chart"
+    t.bigint "track_id"
+    t.date "chart_entry_date"
+    t.integer "entry_position"
+    t.integer "overall_peak_position"
+    t.integer "overall_weeks_on_chart"
+    t.bigint "chart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chart_id"], name: "index_chart_entries_on_chart_id"
+    t.index ["track_id"], name: "index_chart_entries_on_track_id"
+  end
+
   create_table "recipes", force: :cascade do |t|
     t.string "name", null: false
     t.text "ingredients", null: false
@@ -23,4 +46,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_03_171811) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tracks", force: :cascade do |t|
+    t.string "name"
+    t.bigint "artist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_tracks_on_artist_id"
+  end
+
+  add_foreign_key "tracks", "artists"
 end

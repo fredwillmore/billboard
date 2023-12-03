@@ -50,6 +50,7 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+  gem 'byebug'
 end
 
 group :development do
@@ -63,3 +64,12 @@ group :development do
   # gem "spring"
 end
 
+group :test do
+  gem 'factory_bot_rails'
+  gem "rspec-rails"
+  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem "capybara"
+  gem "selenium-webdriver"
+end
+
+gem 'haml-rails'

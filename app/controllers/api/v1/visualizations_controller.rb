@@ -1,4 +1,4 @@
-class VisualizationsController < ApplicationController
+class Api::V1::VisualizationsController < ApplicationController
 
   def multi_line_chart
     @year = visualizations_params[:year].to_i

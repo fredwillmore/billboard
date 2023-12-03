@@ -7,6 +7,8 @@ Rails.application.routes.draw do
       post 'recipes/create'
       get '/show/:id', to: 'recipes#show'
       delete '/destroy/:id', to: 'recipes#destroy'
+
+      get 'visualizations/multi_line_chart' => 'visualizations#multi_line_chart'
     end
   end
   root 'homepage#index'

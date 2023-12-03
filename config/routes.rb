@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'multi_line_chart' => 'visualizations#multi_line_chart'
+
   namespace :api do
     namespace :v1 do
       get 'recipes/index'
